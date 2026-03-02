@@ -23,6 +23,7 @@
   --color-teal-light: #3a8b7a;
   --color-mustard: #c9a227;
   --color-cream: #f7f0e6;
+  --color-footer-bg: #3d3024;
   --color-nav-bg: rgba(250, 246, 241, 0.95);
   --color-nav-bg-solid: rgba(250, 246, 241, 0.98);
   --color-btn-text: #fff;
@@ -59,6 +60,7 @@ html.dark {
   --color-teal-light: #5fc9b4;
   --color-mustard: #dbb63a;
   --color-cream: #201c16;
+  --color-footer-bg: #121010;
   --color-nav-bg: rgba(26, 23, 20, 0.95);
   --color-nav-bg-solid: rgba(26, 23, 20, 0.98);
   --color-btn-text: #1a1714;
@@ -809,7 +811,7 @@ html.dark .theme-toggle .icon-sun {
   border-top: 2px solid var(--color-border);
   padding: 32px 0;
   margin-top: 40px;
-  background: var(--color-warm-dark);
+  background: var(--color-footer-bg);
   transition: background-color 0.4s ease;
 }
 
