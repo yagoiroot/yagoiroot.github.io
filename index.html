@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owen Root — Physicist & Researcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Owen Root</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Landing / Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Owen Root</h1>
+      <p class="hero-tagline">Ph.D. Candidate in Physics at the CUNY Graduate Center</p>
+      <p class="hero-summary">
+        I build computational tools for probabilistic modeling, machine-learning
+        reconstruction, and scientific data analysis. My research spans quantum
+        information, neuromorphic vision, and numerical methods.
+      </p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">Learn More</a>
+        <a href="projects.html" class="btn btn-secondary">View Projects</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a Ph.D. candidate in Physics at the CUNY Graduate Center and
+            Hunter College in New York City, where I work as a Graduate Research
+            Assistant. My research interests include quantum information theory,
+            quantum randomness and foundations, event-based and neuromorphic vision,
+            computational optics, machine learning for imaging, and numerical
+            methods for quantum dynamics. I'm also interested in deep learning
+            generalization and training dynamics, including phenomena like grokking.
+          </p>
+          <p>
+            Before starting my Ph.D., I earned a B.S. in Physics with minors in
+            Mathematics and Political Science from Nebraska Wesleyan University.
+            I also teach as a Graduate Adjunct Lecturer in the Department of Physics
+            and Astronomy at Hunter College, where I lead instructional laboratories
+            for introductory physics courses.
+          </p>
+        </div>
+
+        <div class="about-details">
+          <!-- Education -->
+          <div class="detail-card">
+            <h3>Education</h3>
+            <div class="detail-item">
+              <span class="detail-label">Ph.D., Physics</span>
+              <span class="detail-meta">CUNY Graduate Center — Expected May 2028</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">B.S., Physics</span>
+              <span class="detail-meta">Nebraska Wesleyan University — May 2023</span>
+              <span class="detail-meta">Minors in Mathematics and Political Science</span>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="detail-card">
+            <h3>Technical Skills</h3>
+            <div class="skills-list">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">R</span>
+              <span class="skill-tag">Mathematica</span>
+              <span class="skill-tag">Qiskit</span>
+              <span class="skill-tag">LaTeX</span>
+              <span class="skill-tag">Git/GitHub</span>
+              <span class="skill-tag">Deep Learning</span>
+              <span class="skill-tag">Statistical Modeling</span>
+              <span class="skill-tag">Linux/UNIX</span>
+            </div>
+          </div>
+
+          <!-- Research Interests -->
+          <div class="detail-card">
+            <h3>Research Interests</h3>
+            <ul class="interests-list">
+              <li>Quantum information theory</li>
+              <li>Quantum randomness &amp; foundations</li>
+              <li>Event-based / neuromorphic vision</li>
+              <li>Computational optics</li>
+              <li>Machine learning for imaging</li>
+              <li>Numerical methods for quantum dynamics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Publications -->
+      <div class="publications">
+        <h3>Publications &amp; Preprints</h3>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <span class="pub-authors">J. Burns, <strong>O. Root</strong>, H. Jing, and I. M. Mirza</span>,
+            <span class="pub-title">"Engineering optomechanically induced transparency by coupling a qubit to a spinning resonator,"</span>
+            <span class="pub-journal"><em>J. Opt. Soc. Am. B</em> <strong>40</strong>, 958–965 (2023).</span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-authors"><strong>O. Root</strong> and M. Becker</span>,
+            <span class="pub-title">"Does true randomness exist? Efficacy testing IBM quantum computers via statistical randomness,"</span>
+            <span class="pub-journal">arXiv:2401.12250 (2024).</span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-authors"><strong>O. Root</strong></span>,
+            <span class="pub-title">"Expression for g(k) related to Waring's problem,"</span>
+            <span class="pub-journal">arXiv:2508.17950 (2025).</span>
+          </li>
+          <li class="pub-item">
+            <span class="pub-authors"><strong>O. Root</strong></span>,
+            <span class="pub-title">"Robocode battle builds bridges,"</span>
+            <span class="pub-journal"><em>The SPS Observer</em> <strong>56</strong>(3), Society of Physics Students / AIP (2023).</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Experience Timeline -->
+      <div class="experience">
+        <h3>Experience</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Graduate Research Assistant</h4>
+              <p class="timeline-meta">CUNY Graduate Center &amp; Hunter College — Aug 2023 – Present</p>
+              <p>Developing probabilistic models for neuromorphic cameras, deep-learning reconstruction pipelines, quantum algorithms, and numerical simulation suites.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Graduate Adjunct Lecturer</h4>
+              <p class="timeline-meta">Hunter College — Aug 2024 – Present</p>
+              <p>Leading weekly instructional laboratories for introductory physics courses.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Physics REU Student</h4>
+              <p class="timeline-meta">Miami University — July 2022 – Aug 2022</p>
+              <p>Investigated probe-light transmission in spinning optomechanical ring resonators coupled to a single qubit.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Undergraduate Research Assistant</h4>
+              <p class="timeline-meta">Nebraska Wesleyan University — Aug 2020 – May 2023</p>
+              <p>Investigated statistical randomness in IBM quantum computers and simulated quantum phenomena using an acoustic double slit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2026 Owen Root</p>
+        <div class="footer-links">
+          <a href="https://github.com/yagoiroot" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:oroot@gradcenter.cuny.edu">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
