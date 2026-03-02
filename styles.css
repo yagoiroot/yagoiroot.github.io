@@ -23,6 +23,14 @@
   --color-teal-light: #3a8b7a;
   --color-mustard: #c9a227;
   --color-cream: #f7f0e6;
+  --color-nav-bg: rgba(250, 246, 241, 0.95);
+  --color-nav-bg-solid: rgba(250, 246, 241, 0.98);
+  --color-btn-text: #fff;
+  --color-footer-text: rgba(255, 255, 255, 0.5);
+  --color-footer-link: rgba(255, 255, 255, 0.6);
+  --color-error: #b53a25;
+  --color-focus-ring: rgba(192, 100, 43, 0.1);
+  --color-skill-border: rgba(192, 100, 43, 0.15);
   --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-mono: 'Consolas', 'Fira Code', monospace;
@@ -33,6 +41,35 @@
   --shadow-md: 0 4px 16px rgba(44, 36, 22, 0.1);
   --shadow-lg: 0 8px 32px rgba(44, 36, 22, 0.12);
   --transition: 0.3s ease;
+}
+
+/* ===== Dark Mode ===== */
+html.dark {
+  --color-bg: #1a1714;
+  --color-surface: #242018;
+  --color-text: #e8e0d4;
+  --color-text-secondary: #b5a998;
+  --color-accent: #d4783f;
+  --color-accent-light: #e08b52;
+  --color-accent-subtle: #2e2418;
+  --color-border: #3d3528;
+  --color-muted: #8a7e6e;
+  --color-warm-dark: #ede5d8;
+  --color-teal: #4db3a0;
+  --color-teal-light: #5fc9b4;
+  --color-mustard: #dbb63a;
+  --color-cream: #201c16;
+  --color-nav-bg: rgba(26, 23, 20, 0.95);
+  --color-nav-bg-solid: rgba(26, 23, 20, 0.98);
+  --color-btn-text: #1a1714;
+  --color-footer-text: rgba(232, 224, 212, 0.45);
+  --color-footer-link: rgba(232, 224, 212, 0.6);
+  --color-error: #e05a3a;
+  --color-focus-ring: rgba(212, 120, 63, 0.2);
+  --color-skill-border: rgba(212, 120, 63, 0.25);
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 html {
@@ -46,6 +83,7 @@ body {
   background: var(--color-bg);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 a {
@@ -77,12 +115,12 @@ img {
   left: 0;
   right: 0;
   height: var(--nav-height);
-  background: rgba(250, 246, 241, 0.95);
+  background: var(--color-nav-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 2px solid var(--color-border);
   z-index: 1000;
-  transition: box-shadow var(--transition);
+  transition: box-shadow var(--transition), background var(--transition), border-color var(--transition);
 }
 
 .navbar.scrolled {
@@ -115,6 +153,7 @@ img {
   display: flex;
   list-style: none;
   gap: 4px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -153,6 +192,50 @@ img {
   transition: all var(--transition);
 }
 
+/* ===== Theme Toggle ===== */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--color-muted);
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: var(--color-accent-subtle);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.theme-toggle .icon-moon {
+  display: block;
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+html.dark .theme-toggle .icon-moon {
+  display: none;
+}
+
+html.dark .theme-toggle .icon-sun {
+  display: block;
+}
+
 /* ===== Hero ===== */
 .hero {
   min-height: 100vh;
@@ -163,6 +246,7 @@ img {
   background: var(--color-cream);
   position: relative;
   overflow: hidden;
+  transition: background-color 0.4s ease;
 }
 
 /* Geometric decorative elements */
@@ -257,12 +341,12 @@ img {
 
 .btn-primary {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-btn-text);
 }
 
 .btn-primary:hover {
   background: var(--color-accent-light);
-  color: #fff;
+  color: var(--color-btn-text);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -275,7 +359,7 @@ img {
 
 .btn-secondary:hover {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-btn-text);
   transform: translateY(-2px);
 }
 
@@ -317,6 +401,7 @@ img {
 .about {
   padding: 100px 0 80px;
   background: var(--color-bg);
+  transition: background-color 0.4s ease;
 }
 
 .about-grid {
@@ -339,6 +424,7 @@ img {
   border-radius: var(--radius);
   padding: 24px;
   margin-bottom: 20px;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .detail-card h3 {
@@ -387,7 +473,7 @@ img {
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  border: 1px solid rgba(192, 100, 43, 0.15);
+  border: 1px solid var(--color-skill-border);
 }
 
 .interests-list {
@@ -657,6 +743,7 @@ img {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 32px;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
 .form-group {
@@ -683,14 +770,14 @@ img {
   font-size: 0.95rem;
   color: var(--color-text);
   background: var(--color-cream);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition), background-color 0.4s ease;
   outline: none;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(192, 100, 43, 0.1);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
 }
 
 .form-group input::placeholder,
@@ -714,7 +801,7 @@ img {
 }
 
 .form-status.error {
-  color: #b53a25;
+  color: var(--color-error);
 }
 
 /* ===== Footer ===== */
@@ -723,6 +810,7 @@ img {
   padding: 32px 0;
   margin-top: 40px;
   background: var(--color-warm-dark);
+  transition: background-color 0.4s ease;
 }
 
 .footer-content {
@@ -733,7 +821,7 @@ img {
 
 .footer-content p {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-footer-text);
 }
 
 .footer-links {
@@ -743,7 +831,7 @@ img {
 
 .footer-links a {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-footer-link);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-weight: 500;
@@ -776,7 +864,7 @@ img {
     top: var(--nav-height);
     left: 0;
     right: 0;
-    background: rgba(250, 246, 241, 0.98);
+    background: var(--color-nav-bg-solid);
     backdrop-filter: blur(10px);
     flex-direction: column;
     padding: 16px 24px;
