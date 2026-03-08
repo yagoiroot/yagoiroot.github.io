@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuromorphic Camera Modeling &mdash; Owen Root</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Owen Root</a>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="case-study-page">
+    <div class="container">
+      <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+
+      <div class="case-study-hero-section">
+        <h1 class="case-study-title">Neuromorphic Camera Modeling</h1>
+        <p class="case-study-subtitle">
+          Analytical statistical model for event-based cameras that jointly
+          describes signal-driven and noise-induced events, with an inference
+          workflow for extracting physical sensor parameters from recorded data.
+        </p>
+        <div class="case-study-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Statistical Modeling</span>
+          <span class="tag">Sensor Physics</span>
+          <span class="tag">Event-Based Vision</span>
+          <span class="tag">Parameter Inference</span>
+        </div>
+      </div>
+
+      <div class="case-study-content">
+
+        <div class="case-study-section">
+          <h2>Problem</h2>
+          <p>
+            Event-based (neuromorphic) cameras are a fundamentally different kind
+            of image sensor. Unlike conventional frame-based cameras, each pixel
+            independently fires an asynchronous &ldquo;event&rdquo; when its local
+            brightness change exceeds a threshold. This produces a high-temporal-resolution
+            stream of events rather than a sequence of frames. The challenge is that
+            these sensors generate events from both genuine brightness changes
+            (signal) and internal noise processes, and existing models treat these
+            two sources separately or incompletely. Without a unified statistical
+            description, it is difficult to calibrate the sensor, predict its
+            behavior under novel conditions, or design downstream algorithms that
+            properly account for noise.
+          </p>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Physical System</h2>
+          <p>
+            The sensor under study is an event-based camera with independently
+            operating pixels. Each pixel monitors local log-intensity and fires
+            events when changes cross positive or negative contrast thresholds.
+            The relevant physics includes photon arrival statistics, electronic
+            readout noise, threshold variability across pixels, and refractory
+            timing. The model must describe both the signal pathway (brightness
+            changes that produce events) and the noise pathway (spontaneous events
+            from thermal and electronic noise) within a single probabilistic
+            framework.
+          </p>
+        </div>
+
+        <div class="case-study-section">
+          <h2>What I Built</h2>
+          <p>
+            I developed an analytical statistical model that unifies signal-driven
+            and noise-induced event generation into one probabilistic description.
+            The model characterizes the event rate as a function of physical sensor
+            parameters (contrast thresholds, noise levels, refractory period, and
+            background activity rate) and input stimulus properties. This
+            formulation allows the model to:
+          </p>
+          <ul class="case-study-list">
+            <li>Predict event rates and timing distributions for arbitrary input stimuli</li>
+            <li>Separate signal contributions from noise contributions in recorded event streams</li>
+            <li>Serve as a forward model for calibrated sensor simulation</li>
+            <li>Provide a likelihood function for parameter inference from real data</li>
+          </ul>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Experimental &amp; Computational Workflow</h2>
+          <ol class="case-study-list">
+            <li><strong>Model derivation:</strong> Derived closed-form expressions for event-generation probabilities as functions of physical sensor parameters and stimulus conditions.</li>
+            <li><strong>Controlled recordings:</strong> Designed experimental protocols to record event streams from the camera under known stimulus conditions, producing datasets with ground-truth input signals.</li>
+            <li><strong>Parameter estimation:</strong> Built an inference workflow that fits the model to recorded event streams, extracting estimates of internal sensor parameters (contrast thresholds, noise rates, refractory timing) from the data.</li>
+            <li><strong>Stability validation:</strong> Tested whether inferred parameters remain stable across different experimental conditions, verifying that the model captures genuine sensor properties rather than overfitting to individual recordings.</li>
+            <li><strong>Cross-validation with deep learning:</strong> Used the companion deep-learning reconstruction project (U-Net) as an independent validation signal: if the model correctly describes the sensor, images reconstructed from model-predicted noise statistics should match reconstructions from real noise.</li>
+          </ol>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Validation</h2>
+          <p>
+            The model is validated through multiple independent checks:
+          </p>
+          <ul class="case-study-list">
+            <li><strong>Parameter stability:</strong> Inferred sensor parameters are consistent across different experimental conditions and recording sessions.</li>
+            <li><strong>Predictive accuracy:</strong> The model predicts event-rate distributions that match empirical distributions from held-out recordings.</li>
+            <li><strong>Reconstruction consistency:</strong> Deep-learning reconstructions trained on model-guided data produce outputs consistent with reconstructions from raw sensor data.</li>
+          </ul>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Key Outcomes</h2>
+          <div class="outcomes-grid">
+            <div class="outcome-item">
+              <span class="outcome-label">Unified Model</span>
+              <span class="outcome-value">Single probabilistic framework covering both signal and noise event generation</span>
+            </div>
+            <div class="outcome-item">
+              <span class="outcome-label">Inference Pipeline</span>
+              <span class="outcome-value">Automated workflow for extracting sensor parameters from recorded event streams</span>
+            </div>
+            <div class="outcome-item">
+              <span class="outcome-label">Validated Stability</span>
+              <span class="outcome-value">Parameters verified stable across multiple experimental conditions</span>
+            </div>
+            <div class="outcome-item">
+              <span class="outcome-label">Conference Presentation</span>
+              <span class="outcome-value">Presented results at Nebraska Research &amp; Innovation Conference 2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Relevance</h2>
+          <p>
+            This project demonstrates core competencies in sensor modeling,
+            statistical inference from sensor data, experimental design for
+            calibration, and computational optics. The workflow&mdash;from physical
+            model derivation through parameter estimation to experimental
+            validation&mdash;directly parallels the process of evaluating and
+            characterizing electro-optical and infrared sensor systems in defense
+            and aerospace contexts.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="case-study-nav">
+        <a href="image-reconstruction.html" class="btn btn-primary">Next: Deep-Learning Image Reconstruction &rarr;</a>
+        <a href="projects.html" class="btn btn-secondary">All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2026 Owen Root</p>
+        <div class="footer-links">
+          <a href="https://github.com/yagoiroot" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:oroot@gradcenter.cuny.edu">Email</a>
+          <a href="CV_Owen_Root.pdf" download>CV</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep-Learning Image Reconstruction &mdash; Owen Root</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Owen Root</a>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="case-study-page">
+    <div class="container">
+      <a href="projects.html" class="back-link">&larr; Back to Projects</a>
+
+      <div class="case-study-hero-section">
+        <h1 class="case-study-title">Deep-Learning Image Reconstruction</h1>
+        <p class="case-study-subtitle">
+          U-Net architecture with self-attention trained to reconstruct still images
+          from event-camera noise, serving as an independent validation signal for
+          the underlying sensor model.
+        </p>
+        <div class="case-study-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">U-Net</span>
+          <span class="tag">Self-Attention</span>
+          <span class="tag">Image Reconstruction</span>
+        </div>
+      </div>
+
+      <div class="case-study-content">
+
+        <div class="case-study-section">
+          <h2>Problem</h2>
+          <p>
+            Event-based cameras produce asynchronous streams of brightness-change
+            events rather than conventional image frames. Reconstructing a
+            recognizable still image from this event stream&mdash;especially from
+            the noise component alone&mdash;is a challenging inverse problem. The
+            goal here is twofold: (1) build a reconstruction pipeline that can
+            recover images from event-camera data, and (2) use the quality and
+            consistency of those reconstructions as a validation signal for the
+            companion analytical sensor model. If the probabilistic model correctly
+            captures how the sensor generates events, then reconstructions from
+            model-simulated noise should closely match reconstructions from real
+            sensor noise.
+          </p>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Physical System</h2>
+          <p>
+            The input data consists of event streams from a neuromorphic camera,
+            where each event encodes a pixel location, timestamp, and polarity
+            (brightness increase or decrease). The reconstruction task takes
+            temporal windows of events and produces a grayscale intensity image
+            representing the scene at that moment. The key physical constraint is
+            that the event stream encodes only changes&mdash;not absolute
+            brightness&mdash;so the network must learn to integrate temporal
+            information and resolve ambiguities from noise.
+          </p>
+        </div>
+
+        <div class="case-study-section">
+          <h2>What I Built</h2>
+          <p>
+            I developed a deep-learning reconstruction pipeline based on the U-Net
+            encoder-decoder architecture, augmented with self-attention layers.
+            The key components are:
+          </p>
+          <ul class="case-study-list">
+            <li><strong>Event representation:</strong> Preprocessing step that converts raw event streams into tensor representations suitable for convolutional processing (e.g., event histograms, time surfaces, or voxel grids).</li>
+            <li><strong>U-Net backbone:</strong> Encoder-decoder architecture with skip connections that captures both local detail and global context in the event data.</li>
+            <li><strong>Self-attention modules:</strong> Attention layers that enable the network to model long-range spatial dependencies in the event data, improving reconstruction quality for large-scale scene structures.</li>
+            <li><strong>Training pipeline:</strong> End-to-end training workflow with data loading, augmentation, loss computation, and evaluation metrics.</li>
+          </ul>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Computational Workflow</h2>
+          <ol class="case-study-list">
+            <li><strong>Data preparation:</strong> Converted recorded event streams into structured input tensors, paired with ground-truth intensity images for supervised training.</li>
+            <li><strong>Architecture design:</strong> Implemented U-Net with self-attention in Python, iterating on layer depth, attention placement, and skip-connection design.</li>
+            <li><strong>Training:</strong> Trained the network on event-camera data using standard reconstruction losses; monitored convergence and reconstruction quality across training iterations.</li>
+            <li><strong>Evaluation:</strong> Assessed reconstruction quality using quantitative image similarity metrics and visual inspection against ground-truth images.</li>
+            <li><strong>Model validation:</strong> Applied the trained network to noise-only event streams generated both by the real sensor and by the companion analytical model, comparing reconstruction outputs to test whether the model accurately describes the noise process.</li>
+          </ol>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Validation</h2>
+          <p>
+            The reconstruction pipeline is validated at two levels:
+          </p>
+          <ul class="case-study-list">
+            <li><strong>Reconstruction fidelity:</strong> The network produces visually recognizable images from event-camera data, with quantitative metrics confirming improvement over baseline methods.</li>
+            <li><strong>Cross-model consistency:</strong> Reconstructions from model-simulated event noise are visually and metrically consistent with reconstructions from real sensor noise, confirming that the analytical model captures the relevant noise statistics. This provides an independent, ML-based validation of the physical model.</li>
+          </ul>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Key Outcomes</h2>
+          <div class="outcomes-grid">
+            <div class="outcome-item">
+              <span class="outcome-label">Architecture</span>
+              <span class="outcome-value">U-Net with self-attention, designed for event-camera reconstruction</span>
+            </div>
+            <div class="outcome-item">
+              <span class="outcome-label">Dual Purpose</span>
+              <span class="outcome-value">Both a reconstruction tool and an independent validation signal for the sensor model</span>
+            </div>
+            <div class="outcome-item">
+              <span class="outcome-label">End-to-End Pipeline</span>
+              <span class="outcome-value">Complete workflow from raw events through preprocessing, training, and evaluation</span>
+            </div>
+            <div class="outcome-item">
+              <span class="outcome-label">Cross-Validation</span>
+              <span class="outcome-value">Demonstrated consistency between model-simulated and real-sensor reconstructions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-study-section">
+          <h2>Relevance</h2>
+          <p>
+            This project demonstrates end-to-end ML engineering for an imaging
+            application: from data pipeline design through architecture selection,
+            training, and quantitative evaluation. It combines deep learning with
+            physics-based reasoning&mdash;the reconstruction network does not
+            operate in isolation but interacts with a physical sensor model. This
+            workflow directly applies to roles involving ML for imaging, sensor
+            data processing, and computational photography in defense and
+            aerospace settings.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="case-study-nav">
+        <a href="neuromorphic-camera.html" class="btn btn-secondary">&larr; Prev: Neuromorphic Camera Modeling</a>
+        <a href="projects.html" class="btn btn-primary">All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2026 Owen Root</p>
+        <div class="footer-links">
+          <a href="https://github.com/yagoiroot" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:oroot@gradcenter.cuny.edu">Email</a>
+          <a href="CV_Owen_Root.pdf" download>CV</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -47,7 +47,7 @@ window.addEventListener('scroll', () => {
 // ===== Scroll-triggered Fade-in Animations =====
 function initFadeAnimations() {
   const targets = document.querySelectorAll(
-    '.project-card, .detail-card, .timeline-item, .pub-item, .contact-item'
+    '.project-card, .featured-card, .detail-card, .track-card, .timeline-item, .pub-item, .contact-item, .case-study-section, .outcome-item'
   );
 
   targets.forEach(el => el.classList.add('fade-in'));
